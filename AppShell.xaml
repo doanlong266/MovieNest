@@ -7,9 +7,22 @@
     Shell.FlyoutBehavior="Disabled"
     Title="MovieNest">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab Title="Movie">
+            <Tab.Icon>
+                <FontImageSource Glyph="{x:StaticResource Movie}"  FontFamily="FAS"/>
+            </Tab.Icon>
+        </Tab>
+        <Tab Title="Search">
+            <Tab.Icon>
+                <FontImageSource Glyph="{x:StaticResource Search}"  FontFamily="FAS"/>
+            </Tab.Icon>
+        </Tab>
+        <Tab Title="Setting">
+            <Tab.Icon>
+                <FontImageSource Glyph="{x:StaticResource Setting}"  FontFamily="FAS"/>
+            </Tab.Icon>
+        </Tab>
+    </TabBar>
 
 </Shell>

@@ -27,8 +27,13 @@ namespace MovieNest
                     fonts.AddFont("Lato-Regular.ttf", "LR");
                     fonts.AddFont("Lato-Thin.ttf", "LT");
                     fonts.AddFont("Lato-ThinItalic.ttf","LTI");
-                }); 
-
+                })
+                .ConfigureMauiHandlers(handlers =>
+                 {
+#if ANDROID
+                        handlers.AddHandler(typeof(Shell), typeof(MovieNest.Platforms.Android.Services.CustomerShell));
+#endif
+                 });
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
