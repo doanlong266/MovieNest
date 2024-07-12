@@ -57,6 +57,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\fa-brand.ttf" />
+	  <None Remove="Resources\Fonts\fa-duotone-900.ttf" />
+	  <None Remove="Resources\Fonts\fa-light-300.ttf" />
+	  <None Remove="Resources\Fonts\fa-regular.ttf" />
+	  <None Remove="Resources\Fonts\fa-solid.ttf" />
+	  <None Remove="Resources\Fonts\fa-thin-100.ttf" />
+	  <None Remove="Resources\Fonts\Lato-Black.ttf" />
+	  <None Remove="Resources\Fonts\Lato-BlackItalic.ttf" />
+	  <None Remove="Resources\Fonts\Lato-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Lato-BoldItalic.ttf" />
+	  <None Remove="Resources\Fonts\Lato-Italic.ttf" />
+	  <None Remove="Resources\Fonts\Lato-Light.ttf" />
+	  <None Remove="Resources\Fonts\Lato-LightItalic.ttf" />
+	  <None Remove="Resources\Fonts\Lato-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Lato-Thin.ttf" />
+	  <None Remove="Resources\Fonts\Lato-ThinItalic.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
