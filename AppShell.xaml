@@ -3,7 +3,7 @@
     x:Class="MovieNest.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MovieNest"
+    xmlns:local="clr-namespace:MovieNest.View.Home"
     Shell.FlyoutBehavior="Disabled"
     Title="MovieNest">
 
@@ -12,16 +12,19 @@
             <Tab.Icon>
                 <FontImageSource Glyph="{x:StaticResource Movie}"  FontFamily="FAS"/>
             </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:HomeScreen}"/>
         </Tab>
         <Tab Title="Search">
             <Tab.Icon>
                 <FontImageSource Glyph="{x:StaticResource Search}"  FontFamily="FAS"/>
             </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:HomeScreen}"/>
         </Tab>
         <Tab Title="Setting">
             <Tab.Icon>
                 <FontImageSource Glyph="{x:StaticResource Setting}"  FontFamily="FAS"/>
             </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:HomeScreen}"/>
         </Tab>
     </TabBar>
 

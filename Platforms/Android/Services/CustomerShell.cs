@@ -37,16 +37,18 @@ namespace MovieNest.Platforms.Android.Services
             bottomView.ItemIconTintList = ColorStateList.ValueOf(Colors.White.ToPlatform());
 
             BottomNavigationMenuView? bottomNavView = bottomView.GetChildAt(0) as BottomNavigationMenuView;
-            for (int i = 0; i < bottomNavView?.ChildCount; i++)
+            if (bottomNavView != null)
             {
-                if (bottomNavView.GetChildAt(i).Selected)
+                for (int i = 0; i < bottomNavView.ChildCount; i++)
                 {
-                    var item = bottomNavView.GetChildAt(i) as BottomNavigationItemView;
-                    item?.SetIconTintList(ColorStateList.ValueOf(Color.FromRgb(191, 157, 90).ToPlatform()));
-
+                    var child = bottomNavView.GetChildAt(i);
+                    if (child is BottomNavigationItemView item && item.Selected)
+                    {
+                        item.SetIconTintList(ColorStateList.ValueOf(Color.FromRgb(191, 157, 90).ToPlatform()));
+                    }
                 }
-
             }
         }
+
     }
 }
