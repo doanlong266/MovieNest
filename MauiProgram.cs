@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using DevExpress.Maui;
+using Microsoft.Extensions.Logging;
 
 namespace MovieNest
 {
@@ -9,6 +11,12 @@ namespace MovieNest
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
+                .UseMauiCommunityToolkitMediaElement()
+                .UseDevExpress()
+                .UseDevExpressCollectionView()
+                .UseDevExpressControls()
+                .UseDevExpressEditors()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("fa-duotone-900.ttf", "FAD");
@@ -17,16 +25,18 @@ namespace MovieNest
                     fonts.AddFont("fa-brands.ttf", "FAB");
                     fonts.AddFont("fa-regular.ttf", "FAR");
                     fonts.AddFont("fa-solid.ttf", "FAS");
-                    fonts.AddFont("Lato-Black.ttf", "LB");
-                    fonts.AddFont("Lato-BlackItalic.ttf", "LBI");
-                    fonts.AddFont("Lato-Bold.ttf", "LBO");
-                    fonts.AddFont("Lato-BoldItalic.ttf", "LBOI");
-                    fonts.AddFont("Lato-Italic.ttf", "LI");
-                    fonts.AddFont("Lato-Light.ttf", "LL");
-                    fonts.AddFont("Lato-LightItalic.ttf", "LLI");
-                    fonts.AddFont("Lato-Regular.ttf", "LR");
-                    fonts.AddFont("Lato-Thin.ttf", "LT");
-                    fonts.AddFont("Lato-ThinItalic.ttf","LTI");
+                    fonts.AddFont("Roboto-Black.ttf", "RB");
+                    fonts.AddFont("Roboto-BlackItalic.ttf", "RBI");
+                    fonts.AddFont("Roboto-Bold.ttf", "RBold");
+                    fonts.AddFont("Roboto-BoldItalic.ttf", "RBIta");
+                    fonts.AddFont("Roboto-Italic.ttf", "RI");
+                    fonts.AddFont("Roboto-Light.ttf", "RL");
+                    fonts.AddFont("Roboto-LightItalic.ttf", "RLI");
+                    fonts.AddFont("Roboto-Medium.ttf", "RM");
+                    fonts.AddFont("Roboto-MediumItalic.ttf", "RMI");
+                    fonts.AddFont("Roboto-Regular.ttf", "RR");
+                    fonts.AddFont("Roboto-Thin.ttf", "RT");
+                    fonts.AddFont("Roboto-ThinItalic.ttf", "RTI");
                 })
                 .ConfigureMauiHandlers(handlers =>
                  {

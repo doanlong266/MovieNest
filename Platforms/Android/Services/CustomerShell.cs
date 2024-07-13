@@ -33,7 +33,7 @@ namespace MovieNest.Platforms.Android.Services
         {
             bottomView.LabelVisibilityMode = LabelVisibilityMode.LabelVisibilityUnlabeled;
             bottomView.ItemIconSize = 50;
-            bottomView.SetBackgroundColor(Color.FromRgb(208, 183, 134).ToPlatform());
+            bottomView.SetBackgroundColor(Color.FromRgb(217, 217, 217).ToPlatform());
             bottomView.ItemIconTintList = ColorStateList.ValueOf(Colors.White.ToPlatform());
 
             BottomNavigationMenuView? bottomNavView = bottomView.GetChildAt(0) as BottomNavigationMenuView;
@@ -44,7 +44,7 @@ namespace MovieNest.Platforms.Android.Services
                     var child = bottomNavView.GetChildAt(i);
                     if (child is BottomNavigationItemView item && item.Selected)
                     {
-                        item.SetIconTintList(ColorStateList.ValueOf(Color.FromRgb(191, 157, 90).ToPlatform()));
+                        item.SetIconTintList(ColorStateList.ValueOf(Color.FromRgb(128, 128, 128).ToPlatform()));
                     }
                 }
             }

@@ -2,11 +2,44 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MovieNest.View.Home.HomeScreen"
-             Title="HomeScreen">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:form="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:viewModel="clr-namespace:MovieNest.ViewModel"
+             Padding="0,10,0,0" 
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <viewModel:HomeViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="Transparent" StatusBarStyle="DarkContent" />
+    </ContentPage.Behaviors>
+    <VerticalStackLayout Padding="0">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Logo" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="LR"/>
+            <form:TextEdit Margin="0,0,5,0" WidthRequest="300" BoxPadding="10" HeightRequest="40" CornerRadius="10" PlaceholderColor="{x:StaticResource PrimaryDarkText}" PlaceholderText="Tìm kiếm phim.." TextFontFamily="LR" AffixIndent="10" Prefix="{x:StaticResource Search}" TextColor="{x:StaticResource PrimaryDarkText}" AffixFontFamily="FAS"/>
+        </StackLayout>
+        <StackLayout Margin="0,5,0,0">
+            <CarouselView IndicatorView="indicatorView" ItemsSource="{Binding TrendingFilms}" HeightRequest="450">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Image Source="{Binding IMAGE}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Detail" CommandParameter="{Binding PARAMETER}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="{Binding FILMNAME}" 
+                                   HorizontalOptions="Start" 
+                                   VerticalOptions="End"
+                                   FontFamily="RI"
+                                   Margin="10"
+                                   TextColor="{x:StaticResource PrimaryDarkText}"
+                                   Padding="5,2"/>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <IndicatorView x:Name="indicatorView" Margin="5" HorizontalOptions="EndAndExpand" IndicatorColor="#e6e6e6" SelectedIndicatorColor="#808080"/>
+        </StackLayout>
     </VerticalStackLayout>
 </ContentPage>
