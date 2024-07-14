@@ -2,13 +2,90 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="MovieNest.View.Film.FilmDetailScreen"
-             Title="FilmDetailScreen">
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{x:StaticResource Background}"
+             Padding="0,10,0,0" 
+             x:Class="MovieNest.View.Film.FilmDetailScreen">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{x:StaticResource BackgroundFrame}" StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
     <VerticalStackLayout VerticalOptions="FillAndExpand">
+        <StackLayout Margin="15,0,0,0">
+            <Label Text="{x:StaticResource Left}" FontFamily="FAS" Style="{x:StaticResource Text}" FontSize="20">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Back"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
         <toolkit:MediaElement
+            Margin="0,10,0,0"
             x:Name="Media"
+            ShouldAutoPlay="True"
             Aspect="AspectFit"
             HeightRequest="300"
             />
+        <StackLayout BackgroundColor="{x:StaticResource BackgroundFrame}">
+            <StackLayout Padding="15">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="StartAndExpand">
+                        <Label x:Name="nameEpisode" Style="{x:StaticResource Text}" FontSize="15" />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="EndAndExpand">
+                        <Label Text="{x:StaticResource Down}" FontFamily="FAS" Style="{x:StaticResource Text}" FontSize="20" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Margin="0,5,0,0" HorizontalOptions="StartAndExpand">
+                    <Frame Padding="5,0" BackgroundColor="{x:StaticResource Background}" HasShadow="True" CornerRadius="10">
+                        <Label x:Name="qualityLang" HorizontalOptions="Center" VerticalOptions="Center" Style="{x:StaticResource Text}" TextColor="{x:StaticResource Primary}"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Margin="0,10,0,0">
+                    <Label x:Name="Detail"  Style="{x:StaticResource TextTitle}"/>
+                </StackLayout>
+                <StackLayout Margin="0,10,0,0">
+                    <Label x:Name="Descrip" Style="{x:StaticResource TextTitle}"/>
+                </StackLayout>
+                <StackLayout Margin="0,10,0,0">
+                    <Label Text="Danh sách" Style="{x:StaticResource TextTitle}"/>
+                </StackLayout>
+                <StackLayout Margin="0,20,0,0">
+                    <CollectionView x:Name="lsvEpisode" Style="{x:StaticResource EpisodeCollection}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Grid.Row="0" Padding="0" Grid.Column="0" BackgroundColor="{Binding SelectBackground}" BorderColor="{Binding SelectBackground}" HasShadow="False"  CornerRadius="10">
+                                    <Grid>
+                                        <StackLayout Padding="10">
+                                            <Label Text="{Binding Name}"  VerticalOptions="CenterAndExpand" Style="{x:StaticResource Text}" />
+                                        </StackLayout>
+                                    </Grid>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="chooseEpisode"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Padding="15" Orientation="Horizontal">
+            <StackLayout Orientation="Vertical">
+                <Label x:Name="love" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{x:StaticResource Love}" Style="{x:StaticResource Text}" FontFamily="FAS" FontSize="25">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="addFavorite"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Margin="0,10,0,0" Text="Yêu thích" Style="{x:StaticResource Text}" FontSize="15" FontFamily="NR"/>
+            </StackLayout>
+            <StackLayout Margin="25,0,0,0" Orientation="Vertical">
+                <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{x:StaticResource Download}" Style="{x:StaticResource Text}" FontFamily="FAS" FontSize="25">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="downloadFilm"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Margin="0,10,0,0" Text="Tải xuống" Style="{x:StaticResource Text}" FontSize="15" FontFamily="NR"/>
+            </StackLayout>
+        </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

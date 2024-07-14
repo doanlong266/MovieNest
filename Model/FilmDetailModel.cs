@@ -4,6 +4,11 @@ using Newtonsoft.Json;
 
 namespace MovieNest.Model
 {
+    public class BaseResponse
+    {
+        public bool Status { get; set; }
+        public string Msg { get; set; }
+    }
     public class Created
     {
         [JsonProperty("time")]
@@ -143,7 +148,14 @@ namespace MovieNest.Model
 
         [JsonProperty("link_m3u8")]
         public string? LinkM3u8 { get; set; }
+
+        [JsonProperty("select_episode")]
+        public bool SelectEpisode { get; set; } 
+
+        [JsonProperty("select_background")]
+        public string? SelectBackground { get; set; }  
     }
+
 
     public class Episode
     {

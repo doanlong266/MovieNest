@@ -3,28 +3,30 @@
     x:Class="MovieNest.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MovieNest.View.Home"
+    xmlns:home="clr-namespace:MovieNest.View.Home"
+    xmlns:search="clr-namespace:MovieNest.View.Search"
+    
     Shell.FlyoutBehavior="Disabled"
     Title="MovieNest">
 
     <TabBar>
         <Tab Title="Movie">
             <Tab.Icon>
-                <FontImageSource Glyph="{x:StaticResource Movie}"  FontFamily="FAS"/>
+                <FontImageSource Glyph="{x:StaticResource Movie}" Color="#899ead" FontFamily="FAS"/>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate local:HomeScreen}"/>
+            <ShellContent ContentTemplate="{DataTemplate home:HomeScreen}"/>
         </Tab>
         <Tab Title="Search">
             <Tab.Icon>
-                <FontImageSource Glyph="{x:StaticResource Search}"  FontFamily="FAS"/>
+                <FontImageSource Glyph="{x:StaticResource Search}" Color="#899ead"  FontFamily="FAS"/>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate local:HomeScreen}"/>
+            <ShellContent ContentTemplate="{DataTemplate search:SearchScreen}"/>
         </Tab>
         <Tab Title="Setting">
             <Tab.Icon>
-                <FontImageSource Glyph="{x:StaticResource Setting}"  FontFamily="FAS"/>
+                <FontImageSource Glyph="{x:StaticResource Setting}" Color="#899ead"  FontFamily="FAS"/>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate local:HomeScreen}"/>
+            <ShellContent ContentTemplate="{DataTemplate home:HomeScreen}"/>
         </Tab>
     </TabBar>
 

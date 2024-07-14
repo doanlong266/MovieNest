@@ -5,4 +5,8 @@
     <x:String x:Key="Movie">&#xf008;</x:String>
     <x:String x:Key="Search">&#xf002;</x:String>
     <x:String x:Key="Setting">&#xf013;</x:String>
+    <x:String x:Key="Down">&#xf078;</x:String>
+    <x:String x:Key="Left">&#xf053;</x:String>
+    <x:String x:Key="Love">&#xf004;</x:String>
+    <x:String x:Key="Download">&#xf33d;</x:String>
 </ResourceDictionary>

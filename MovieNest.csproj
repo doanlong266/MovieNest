@@ -63,23 +63,29 @@
 	  <None Remove="Resources\Fonts\fa-regular.ttf" />
 	  <None Remove="Resources\Fonts\fa-solid.ttf" />
 	  <None Remove="Resources\Fonts\fa-thin-100.ttf" />
-	  <None Remove="Resources\Fonts\Roboto-Black.ttf" />
-	  <None Remove="Resources\Fonts\Roboto-BlackItalic.ttf" />
-	  <None Remove="Resources\Fonts\Roboto-Bold.ttf" />
-	  <None Remove="Resources\Fonts\Roboto-BoldItalic.ttf" />
-	  <None Remove="Resources\Fonts\Roboto-Italic.ttf" />
-	  <None Remove="Resources\Fonts\Roboto-Light.ttf" />
-	  <None Remove="Resources\Fonts\Roboto-LightItalic.ttf" />
-	  <None Remove="Resources\Fonts\Roboto-Medium.ttf" />
-	  <None Remove="Resources\Fonts\Roboto-MediumItalic.ttf" />
-	  <None Remove="Resources\Fonts\Roboto-Regular.ttf" />
-	  <None Remove="Resources\Fonts\Roboto-Thin.ttf" />
-	  <None Remove="Resources\Fonts\Roboto-ThinItalic.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-Black.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-BlackItalic.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-BoldItalic.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-ExtraBold.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-ExtraBoldItalic.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-ExtraLight.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-ExtraLightItalic.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-Italic.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-Light.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-LightItalic.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-Medium.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-MediumItalic.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-SemiBold.ttf" />
+	  <None Remove="Resources\Fonts\Nunito-SemiBoldItalic.ttf" />
+	  <None Remove="Resources\Images\loading.gif" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
 		<PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="4.0.1" />
+		<PackageReference Include="Controls.UserDialogs.Maui" Version="1.5.4" />
 		<PackageReference Include="DevExpress.Maui.Editors" Version="24.1.3" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.70" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.70" />
@@ -103,6 +109,13 @@
 	  <MauiXaml Update="View\Home\HomeScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\Search\SearchScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Component\" />
 	</ItemGroup>
 
 </Project>

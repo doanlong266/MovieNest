@@ -5,41 +5,139 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:form="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
              xmlns:viewModel="clr-namespace:MovieNest.ViewModel"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             Background="{x:StaticResource Background}"
              Padding="0,10,0,0" 
-             BackgroundColor="White">
+             >
     <ContentPage.BindingContext>
         <viewModel:HomeViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="Transparent" StatusBarStyle="DarkContent" />
+        <toolkit:StatusBarBehavior StatusBarColor="{x:StaticResource BackgroundFrame}" StatusBarStyle="LightContent" />
     </ContentPage.Behaviors>
-    <VerticalStackLayout Padding="0">
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Logo" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="LR"/>
-            <form:TextEdit Margin="0,0,5,0" WidthRequest="300" BoxPadding="10" HeightRequest="40" CornerRadius="10" PlaceholderColor="{x:StaticResource PrimaryDarkText}" PlaceholderText="Tìm kiếm phim.." TextFontFamily="LR" AffixIndent="10" Prefix="{x:StaticResource Search}" TextColor="{x:StaticResource PrimaryDarkText}" AffixFontFamily="FAS"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Orientation="Horizontal" Grid.Row="0" Padding="10">
+            <Label Text="Logo" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Style="{x:StaticResource Text}"/>
+            <form:TextEdit Margin="0,0,5,0" WidthRequest="300" BoxPadding="10" IsReadOnly="True" HeightRequest="40" CornerRadius="10" PlaceholderColor="{x:StaticResource White}" PlaceholderText="Tìm kiếm phim.." TextFontFamily="NR" AffixIndent="10" Prefix="{x:StaticResource Search}" AffixColor="{x:StaticResource White}" TextColor="{x:StaticResource White}" AffixFontFamily="FAS">
+                <form:TextEdit.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Search"/>
+                </form:TextEdit.GestureRecognizers>
+            </form:TextEdit>
         </StackLayout>
-        <StackLayout Margin="0,5,0,0">
-            <CarouselView IndicatorView="indicatorView" ItemsSource="{Binding TrendingFilms}" HeightRequest="450">
-                <CarouselView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Image Source="{Binding IMAGE}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Detail" CommandParameter="{Binding PARAMETER}"/>
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Label Text="{Binding FILMNAME}" 
-                                   HorizontalOptions="Start" 
-                                   VerticalOptions="End"
-                                   FontFamily="RI"
-                                   Margin="10"
-                                   TextColor="{x:StaticResource PrimaryDarkText}"
-                                   Padding="5,2"/>
-                        </Grid>
-                    </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>
-            <IndicatorView x:Name="indicatorView" Margin="5" HorizontalOptions="EndAndExpand" IndicatorColor="#e6e6e6" SelectedIndicatorColor="#808080"/>
-        </StackLayout>
-    </VerticalStackLayout>
+
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <StackLayout Margin="0,5,0,0">
+                    <CarouselView IndicatorView="indicatorView" ItemsSource="{Binding TrendingFilms}" HeightRequest="450">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding IMAGE}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Detail" CommandParameter="{Binding PARAMETER}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Text="{Binding FILMNAME}" HorizontalOptions="Start" VerticalOptions="End" FontFamily="NBI" Margin="10" TextColor="{x:StaticResource PrimaryDarkText}" Padding="5,2"/>
+                                    <Frame HorizontalOptions="End" VerticalOptions="Start" WidthRequest="50" HeightRequest="20" Padding="0" BackgroundColor="{x:StaticResource Red}">
+                                        <Label Text="Hot" VerticalOptions="Center" HorizontalOptions="Center" Style="{x:StaticResource Text}"/>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                    <IndicatorView x:Name="indicatorView" Margin="5" HorizontalOptions="EndAndExpand" IndicatorColor="#e6e6e6" SelectedIndicatorColor="#808080"/>
+                </StackLayout>
+                <StackLayout Margin="0,5,0,0">
+                    <Label Margin="10,0,0,0" Text="Phim bộ" Style="{x:StaticResource Text}" TextColor="{x:StaticResource Primary}"  FontSize="20"/>
+                    <CollectionView x:Name="lsvPhimBo" Margin="10,5,0,0" ItemsSource="{Binding PhimBoFilms}" Style="{x:StaticResource FilmCategory}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="{Binding IMAGE}" Aspect="AspectFit" HeightRequest="200">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Detail" CommandParameter="{Binding PARAMETER}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Margin="0,-30,0,0" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" Text="{Binding FILMNAME}" FontSize="10" FontFamily="NM" TextColor="{x:StaticResource White}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout Margin="0,5,0,0">
+                    <Label Margin="10,0,0,0" Text="Phim lẻ" Style="{x:StaticResource Text}" TextColor="{x:StaticResource Primary}"  FontSize="20"/>
+                    <CollectionView x:Name="lsvPhimLe" Margin="10,5,0,0" ItemsSource="{Binding PhimLeFilms}" Style="{x:StaticResource FilmCategory}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="{Binding IMAGE}" Aspect="AspectFit" HeightRequest="200">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Detail" CommandParameter="{Binding PARAMETER}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Margin="0,-30,0,0" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" Text="{Binding FILMNAME}" FontSize="10" FontFamily="NM" TextColor="{x:StaticResource White}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout Margin="0,5,0,0">
+                    <Label Margin="10,0,0,0" Text="Phim hoạt hình" Style="{x:StaticResource Text}" TextColor="{x:StaticResource Primary}"  FontSize="20"/>
+                    <CollectionView x:Name="lsvPhimHoatHinh" Margin="10,5,0,0" ItemsSource="{Binding PhimHoatHinhFilms}" Style="{x:StaticResource FilmCategory}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="{Binding IMAGE}" Aspect="AspectFit" HeightRequest="200">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Detail" CommandParameter="{Binding PARAMETER}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Margin="0,-30,0,0" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" Text="{Binding FILMNAME}" FontSize="10" FontFamily="NM" TextColor="{x:StaticResource White}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout Margin="0,5,0,0">
+                    <Label Margin="10,0,0,0" Text="TV Shows" Style="{x:StaticResource Text}" TextColor="{x:StaticResource Primary}"  FontSize="20"/>
+                    <CollectionView x:Name="lsvTvShows" Margin="10,5,0,0" ItemsSource="{Binding TvShowsFilms}" Style="{x:StaticResource FilmCategory}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="{Binding IMAGE}" Aspect="AspectFit" HeightRequest="200">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Detail" CommandParameter="{Binding PARAMETER}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Margin="0,-30,0,0" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" Text="{Binding FILMNAME}" FontSize="10" FontFamily="NM" TextColor="{x:StaticResource White}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>
