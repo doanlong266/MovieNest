@@ -94,5 +94,53 @@ namespace MovieNest.Helpers
             }
             return allItems;
         }
+        public static async Task<List<FilmModel>> SearchAsync(string baseUrl, string keyword, int limit)
+        {
+            var allItems = new List<FilmModel>();
+            string url = $"{baseUrl}?keyword={keyword}&limit={limit}";
+
+            string response = await GetResponseAsync(url);
+            if (response != null)
+            {
+                try
+                {
+
+                    var searchResponse = JsonConvert.DeserializeObject<SearchModel>(response);
+
+                    if (searchResponse == null)
+                    {
+                        Console.WriteLine("Deserialization returned null for searchResponse.");
+                        return allItems;
+                    }
+
+                    if (searchResponse.Data.Items == null)
+                    {
+                        Console.WriteLine("Deserialization returned null items.");
+                        return allItems;
+                    }
+
+                    foreach (var item in searchResponse.Data.Items)
+                    {
+                        allItems.Add(new FilmModel
+                        {
+                            Name = item.Name,
+                            Slug = item.Slug,
+                            PosterUrl = $"https://img.phimapi.com/{item.PosterUrl}",
+                        });
+                    }
+                }
+                catch (JsonException ex)
+                {
+                    Console.WriteLine($"Deserialization error: {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Response was null.");
+            }
+
+            return allItems;
+        }
+
     }
 }

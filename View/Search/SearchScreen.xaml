@@ -7,8 +7,7 @@
              NavigationPage.HasNavigationBar="False"
              Shell.NavBarIsVisible="False"
              Background="{x:StaticResource Background}"
-             Padding="0,10,0,0" 
-             Title="SearchScreen">
+             Padding="0,10,0,0">
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="{x:StaticResource BackgroundFrame}" StatusBarStyle="LightContent" />
     </ContentPage.Behaviors>
@@ -24,11 +23,37 @@
                     <TapGestureRecognizer Tapped="Back"/>
                 </Label.GestureRecognizers>
             </Label>
-            <form:TextEdit Margin="0,20,0,0" BoxPadding="10" HeightRequest="40" CornerRadius="10" PlaceholderColor="{x:StaticResource White}" PlaceholderText="Tìm kiếm phim.." TextFontFamily="NR" AffixIndent="10" Prefix="{x:StaticResource Search}" TextColor="{x:StaticResource White}" AffixFontFamily="FAS"/>
+            <form:TextEdit Margin="0,20,0,0" BoxPadding="10" Unfocused="Search"  x:Name="SearchFilm" HeightRequest="40" CornerRadius="10" PlaceholderColor="{x:StaticResource White}" PlaceholderText="Tìm kiếm phim.." TextFontFamily="NR" AffixIndent="10" Prefix="{x:StaticResource Search}" TextColor="{x:StaticResource White}" AffixFontFamily="FAS"/>
 
         </StackLayout>
 
         <ScrollView Grid.Row="1">
+            <StackLayout>
+                <StackLayout>
+                    <Label Padding="10" Text="Danh sách tìm kiếm" Style="{x:StaticResource Text}" FontSize="20" TextColor="{x:StaticResource Primary}"/>
+                </StackLayout>
+                <StackLayout>
+                    <CollectionView x:Name="FilmSearch" Margin="10,5,0,0" Style="{StaticResource FilmSearch}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="{Binding PosterUrl}" Aspect="AspectFit" HeightRequest="300">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Detail" CommandParameter="{Binding Slug}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Margin="0,0,0,0" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" Text="{Binding Name}" FontSize="10" FontFamily="NM" TextColor="{StaticResource White}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Label x:Name="EmptySearch" Text="Không tìm thấy phim" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Center" Style="{x:StaticResource Text}" TextColor="{x:StaticResource Primary}" FontSize="15"/>
+                </StackLayout>
+            </StackLayout>
         </ScrollView>
     </Grid>
 </ContentPage>

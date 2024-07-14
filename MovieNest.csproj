@@ -103,6 +103,9 @@
 	  <MauiXaml Update="Resources\Styles\Icons.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\Favorite\FavoriteScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\Film\FilmDetailScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

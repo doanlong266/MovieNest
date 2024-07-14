@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:home="clr-namespace:MovieNest.View.Home"
     xmlns:search="clr-namespace:MovieNest.View.Search"
+    xmlns:favorite="clr-namespace:MovieNest.View.Favorite"
     
     Shell.FlyoutBehavior="Disabled"
     Title="MovieNest">
@@ -24,9 +25,9 @@
         </Tab>
         <Tab Title="Setting">
             <Tab.Icon>
-                <FontImageSource Glyph="{x:StaticResource Setting}" Color="#899ead"  FontFamily="FAS"/>
+                <FontImageSource Glyph="{x:StaticResource Love}" Color="#899ead"  FontFamily="FAS"/>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate home:HomeScreen}"/>
+            <ShellContent ContentTemplate="{DataTemplate favorite:FavoriteScreen}"/>
         </Tab>
     </TabBar>
 

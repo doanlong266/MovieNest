@@ -24,7 +24,7 @@
 
         <StackLayout Orientation="Horizontal" Grid.Row="0" Padding="10">
             <Label Text="Logo" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Style="{x:StaticResource Text}"/>
-            <form:TextEdit Margin="0,0,5,0" WidthRequest="300" BoxPadding="10" IsReadOnly="True" HeightRequest="40" CornerRadius="10" PlaceholderColor="{x:StaticResource White}" PlaceholderText="Tìm kiếm phim.." TextFontFamily="NR" AffixIndent="10" Prefix="{x:StaticResource Search}" AffixColor="{x:StaticResource White}" TextColor="{x:StaticResource White}" AffixFontFamily="FAS">
+            <form:TextEdit Margin="0,0,5,0" WidthRequest="300" TextChanged="Search" BoxPadding="10" IsReadOnly="True" HeightRequest="40" CornerRadius="10" PlaceholderColor="{x:StaticResource White}" PlaceholderText="Tìm kiếm phim.." TextFontFamily="NR" AffixIndent="10" Prefix="{x:StaticResource Search}" AffixColor="{x:StaticResource White}" TextColor="{x:StaticResource White}" AffixFontFamily="FAS">
                 <form:TextEdit.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Search"/>
                 </form:TextEdit.GestureRecognizers>

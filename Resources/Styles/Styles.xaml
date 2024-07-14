@@ -42,6 +42,36 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="FilmSearch" TargetType="CollectionView">
+        <Setter Property="HeightRequest" Value="300"/>
+        <Setter Property="SelectionMode" Value="None"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Never"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Always"/>
+        <Setter Property="ItemsLayout">
+            <Setter.Value>
+                <GridItemsLayout
+            Span="2"
+            HorizontalItemSpacing="10"
+            VerticalItemSpacing="10"
+            Orientation="Vertical" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="FilmFavorite" TargetType="CollectionView">
+        <Setter Property="HeightRequest" Value="300"/>
+        <Setter Property="SelectionMode" Value="None"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Never"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Always"/>
+        <Setter Property="ItemsLayout">
+            <Setter.Value>
+                <GridItemsLayout
+         Span="2"
+         HorizontalItemSpacing="10"
+         VerticalItemSpacing="10"
+         Orientation="Vertical" />
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style TargetType="Shell" ApplyToDerivedTypes="True">
         <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource ColorShellIcon}, Dark={StaticResource OffBlack}}" />
         <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource SecondaryDarkText}}" />

@@ -20,6 +20,14 @@ namespace MovieNest.View.Film
             LoadingHepler.Stop();
 
         }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            if (Media != null)
+            {
+                Media.Stop();
+            }
+        }
 
         public async void LoadInfoFilm(string id)
         {
