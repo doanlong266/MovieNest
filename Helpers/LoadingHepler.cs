@@ -13,5 +13,11 @@ namespace MovieNest.Helpers
             await Task.Delay(5000);
             UserDialogs.Instance.HideHud();
         }
+        public async static void Maintenance()
+        {
+            UserDialogs.Instance.ShowHudImage("baotri.gif", "Phim đang bảo trì");
+            await Task.Delay(5000);
+            UserDialogs.Instance.HideHud();
+        }
     }
 }

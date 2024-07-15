@@ -38,12 +38,51 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
+	  <ApplicationTitle>Movie Nest</ApplicationTitle>
+	  <ApplicationId>movienest</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
+	  <ApplicationTitle>Movie Nest</ApplicationTitle>
+	  <ApplicationId>movienest</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-maccatalyst|AnyCPU'">
+	  <ApplicationTitle>Movie Nest</ApplicationTitle>
+	  <ApplicationId>movienest</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationTitle>Movie Nest</ApplicationTitle>
+	  <ApplicationId>movienest</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+	  <ApplicationTitle>Movie Nest</ApplicationTitle>
+	  <ApplicationId>movienest</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
+	  <ApplicationTitle>Movie Nest</ApplicationTitle>
+	  <ApplicationId>movienest</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
+	  <ApplicationTitle>Movie Nest</ApplicationTitle>
+	  <ApplicationId>movienest</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationTitle>Movie Nest</ApplicationTitle>
+	  <ApplicationId>movienest</ApplicationId>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.png" Resize="false" />
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.png" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -54,6 +93,15 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AndroidResource Remove="Component\**" />
+	  <Compile Remove="Component\**" />
+	  <EmbeddedResource Remove="Component\**" />
+	  <MauiCss Remove="Component\**" />
+	  <MauiXaml Remove="Component\**" />
+	  <None Remove="Component\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -79,7 +127,9 @@
 	  <None Remove="Resources\Fonts\Nunito-Regular.ttf" />
 	  <None Remove="Resources\Fonts\Nunito-SemiBold.ttf" />
 	  <None Remove="Resources\Fonts\Nunito-SemiBoldItalic.ttf" />
+	  <None Remove="Resources\Images\baotri.svg" />
 	  <None Remove="Resources\Images\loading.gif" />
+	  <None Remove="Resources\Images\logo.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -115,10 +165,6 @@
 	  <MauiXaml Update="View\Search\SearchScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Component\" />
 	</ItemGroup>
 
 </Project>

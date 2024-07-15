@@ -113,6 +113,7 @@ namespace MovieNest.View.Film
                             else
                             {
                                 System.Diagnostics.Debug.WriteLine($"Non-success status: {baseResponse.Msg}");
+                                LoadingHepler.Maintenance();
                             }
                         }
                     }

@@ -50,7 +50,7 @@ public partial class SearchScreen : ContentPage
     {
         string query = SearchFilm.Text;
 
-        if (!string.IsNullOrWhiteSpace(query))
+        if (!string.IsNullOrWhiteSpace(RemoveDiacritics.RemoveVietnameseDiacritics(query.ToLower())))
         {
             LoadingHepler.Run();
             List<FilmModel> results = await HttpHelper.SearchAsync(BaseUrl, query, 10);
