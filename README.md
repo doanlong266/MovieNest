@@ -38,7 +38,7 @@
 
 1. Clone repository này về máy của bạn:
    ```bash
-   git clone https://github.com/yourusername/maui-mobile-phim.git
+   git clone https://github.com/doanlong266/MovieNest.git
 2. Mở project bằng Visual Studio.
 3. Chạy ứng dụng trên thiết bị di động hoặc trình giả lập.
 ## Đóng góp
