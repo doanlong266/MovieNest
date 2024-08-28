@@ -1,4 +1,4 @@
-![Screenshot_1724827729](https://github.com/user-attachments/assets/fb33e404-27b9-4fd5-87bb-3b12a07078ad)# MAUI Mobile Phim
+# MAUI Mobile Phim
 
 ## Giới thiệu
 
