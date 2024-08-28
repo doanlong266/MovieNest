@@ -13,7 +13,7 @@
 
    <img src="https://github.com/user-attachments/assets/1179e0ff-a927-4746-bd71-0ac9c32c68c0" width="300" />
 
-2. **Trang tìm kiếm (Search)**: Cho phép người dùng tìm kiếm phim theo tên, thể loại, diễn viên, và nhiều tiêu chí khác.
+2. **Trang tìm kiếm (Search)**: Cho phép người dùng tìm kiếm phim theo tên
 
    <img src="https://github.com/user-attachments/assets/27622aef-e314-49d0-9f88-e76a041a6977" width="300" />
 
