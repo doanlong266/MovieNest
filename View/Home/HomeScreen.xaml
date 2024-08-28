@@ -21,7 +21,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <StackLayout Orientation="Horizontal" Grid.Row="0" Padding="10">
             <Image Margin="-10,0,0,0" HorizontalOptions="StartAndExpand" Source="logo.png" Aspect="AspectFit" WidthRequest="80" HeightRequest="50"/>
             <form:TextEdit  HorizontalOptions="EndAndExpand" WidthRequest="300" TextChanged="Search" BoxPadding="10" IsReadOnly="True" HeightRequest="40" CornerRadius="10" PlaceholderColor="{x:StaticResource White}" PlaceholderText="Tìm kiếm phim.." TextFontFamily="NR" AffixIndent="10" Prefix="{x:StaticResource Search}" AffixColor="{x:StaticResource White}" TextColor="{x:StaticResource White}" AffixFontFamily="FAS">
@@ -43,7 +42,7 @@
                                             <TapGestureRecognizer Tapped="Detail" CommandParameter="{Binding PARAMETER}"/>
                                         </Image.GestureRecognizers>
                                     </Image>
-                                    <Label Text="{Binding FILMNAME}" HorizontalOptions="Start" VerticalOptions="End" FontFamily="NBI" Margin="10" TextColor="{x:StaticResource PrimaryDarkText}" Padding="5,2"/>
+                                    <Label Text="{Binding FILMNAME}" HorizontalOptions="Start" VerticalOptions="End" FontFamily="NBI" Margin="10" TextColor="{x:StaticResource Primary}" Padding="5,2"/>
                                     <Frame HorizontalOptions="End" VerticalOptions="Start" WidthRequest="50" HeightRequest="20" Padding="0" BackgroundColor="{x:StaticResource Red}">
                                         <Label Text="Hot" VerticalOptions="Center" HorizontalOptions="Center" Style="{x:StaticResource Text}"/>
                                     </Frame>
@@ -51,7 +50,7 @@
                             </DataTemplate>
                         </CarouselView.ItemTemplate>
                     </CarouselView>
-                    <IndicatorView x:Name="indicatorView" Margin="5" HorizontalOptions="EndAndExpand" IndicatorColor="#e6e6e6" SelectedIndicatorColor="#808080"/>
+                    <IndicatorView x:Name="indicatorView" Margin="5" HorizontalOptions="CenterAndExpand" IndicatorColor="{x:StaticResource Background}" SelectedIndicatorColor="{x:StaticResource Background}"/>
                 </StackLayout>
                 <StackLayout Margin="0,5,0,0">
                     <Label Margin="10,0,0,0" Text="Phim bộ" Style="{x:StaticResource Text}" TextColor="{x:StaticResource Primary}"  FontSize="20"/>

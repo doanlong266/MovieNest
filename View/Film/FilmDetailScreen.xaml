@@ -56,7 +56,7 @@
                                 <Frame Grid.Row="0" Padding="0" Grid.Column="0" BackgroundColor="{Binding SelectBackground}" BorderColor="{Binding SelectBackground}" HasShadow="False"  CornerRadius="10">
                                     <Grid>
                                         <StackLayout Padding="10">
-                                            <Label Text="{Binding Name}"  VerticalOptions="CenterAndExpand" Style="{x:StaticResource Text}" />
+                                            <Label Margin="0,0,5,0" Text="{Binding Name}" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" Style="{x:StaticResource Text}" />
                                         </StackLayout>
                                     </Grid>
                                     <Frame.GestureRecognizers>

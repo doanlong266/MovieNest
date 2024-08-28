@@ -8,30 +8,48 @@ namespace MovieNest.ViewModel
 {
     public class HomeViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<TrendingFilmModel> TrendingFilms { get; set; }
-        public ObservableCollection<TrendingFilmModel> PhimBoFilms { get; set; }
-        public ObservableCollection<TrendingFilmModel> PhimLeFilms { get; set; }
-        public ObservableCollection<TrendingFilmModel> PhimHoatHinhFilms { get; set; }
-        public ObservableCollection<TrendingFilmModel> TvShowsFilms { get; set; }
+        public ObservableCollection<MovieItem> TrendingFilms { get; set; }
+        public ObservableCollection<MovieItem> PhimBoFilms { get; set; }
+        public ObservableCollection<MovieItem> PhimLeFilms { get; set; }
+        public ObservableCollection<MovieItem> PhimHoatHinhFilms { get; set; }
+        public ObservableCollection<MovieItem> TvShowsFilms { get; set; }
 
 
 
         public HomeViewModel()
         {
-            TrendingFilms = new ObservableCollection<TrendingFilmModel>
+            TrendingFilms = new ObservableCollection<MovieItem>();
+            PhimBoFilms = new ObservableCollection<MovieItem>();
+            PhimLeFilms = new ObservableCollection<MovieItem>();
+            PhimHoatHinhFilms = new ObservableCollection<MovieItem>();
+            TvShowsFilms = new ObservableCollection<MovieItem>();
+        }
+
+        public async Task LoadDataAsync()
+        {
+            var trendingTask = FetchAndPopulateTrendingFilmsAsync();
+            var phimBoTask = FetchAndPopulatePhimBoFilmsAsync();
+            var phimLeTask = FetchAndPopulatePhimLeFilmsAsync();
+            var phimHoatHinhTask = FetchAndPopulatePhimHoatHinhFilmsAsync();
+            var tvShowsTask = FetchAndPopulateTvShowsFilmsAsync();
+
+            await Task.WhenAll(trendingTask, phimBoTask, phimLeTask, phimHoatHinhTask, tvShowsTask);
+        }
+
+        private async Task FetchAndPopulateTrendingFilmsAsync()
+        {
+            var trendingViewModel = new TrendingFilmViewModel();
+            var items = await trendingViewModel.FetchTrendingFilmDataAsync();
+
+            foreach (var item in items)
             {
-                new TrendingFilmModel { IMAGE = "https://img.phimapi.com/upload/vod/20240627-1/74f096acaf7d38e592fa4a535f6bbadd.jpg" , FILMNAME = "Độ Hoa Niên",PARAMETER="do-hoa-nien"},
-            };
-
-            PhimBoFilms = new ObservableCollection<TrendingFilmModel>();
-            _ = FetchAndPopulatePhimBoFilmsAsync();
-            PhimLeFilms = new ObservableCollection<TrendingFilmModel>();
-            _ = FetchAndPopulatePhimLeFilmsAsync();
-            PhimHoatHinhFilms = new ObservableCollection<TrendingFilmModel>();
-            _ = FetchAndPopulatePhimHoatHinhFilmsAsync();
-            TvShowsFilms = new ObservableCollection<TrendingFilmModel>();
-            _ = FetchAndPopulateTvShowsFilmsAsync();
-
+                TrendingFilms.Add(new MovieItem
+                {
+                    IMAGE = item.PosterUrl,
+                    FILMNAME = item.Name,
+                    PARAMETER = item.Slug
+                });
+            }
         }
 
         private async Task FetchAndPopulatePhimBoFilmsAsync()
@@ -41,7 +59,7 @@ namespace MovieNest.ViewModel
 
             foreach (var item in items)
             {
-                PhimBoFilms.Add(new TrendingFilmModel
+                PhimBoFilms.Add(new MovieItem
                 {
                     IMAGE = $"https://img.phimapi.com/{item.PosterUrl}",
                     FILMNAME = item.Name,
@@ -57,7 +75,7 @@ namespace MovieNest.ViewModel
 
             foreach (var item in items)
             {
-                PhimLeFilms.Add(new TrendingFilmModel
+                PhimLeFilms.Add(new MovieItem
                 {
                     IMAGE = $"https://img.phimapi.com/{item.PosterUrl}",
                     FILMNAME = item.Name,
@@ -72,7 +90,7 @@ namespace MovieNest.ViewModel
 
             foreach (var item in items)
             {
-                PhimHoatHinhFilms.Add(new TrendingFilmModel
+                PhimHoatHinhFilms.Add(new MovieItem
                 {
                     IMAGE = $"https://img.phimapi.com/{item.PosterUrl}",
                     FILMNAME = item.Name,
@@ -87,7 +105,7 @@ namespace MovieNest.ViewModel
 
             foreach (var item in items)
             {
-                TvShowsFilms.Add(new TrendingFilmModel
+                TvShowsFilms.Add(new MovieItem
                 {
                     IMAGE = $"https://img.phimapi.com/{item.PosterUrl}",
                     FILMNAME = item.Name,

@@ -1,9 +1,65 @@
-﻿namespace MovieNest.Model
+﻿using Newtonsoft.Json;
+
+namespace MovieNest.Model
 {
     public class TrendingFilmModel
     {
-        public string? IMAGE { get; set; } = "https://img.phimapi.com/upload/vod/20240627-1/74f096acaf7d38e592fa4a535f6bbadd.jpg";
-        public string? FILMNAME { get; set; } = "Độ Hoa Niên";
-        public string? PARAMETER { get; set; } = "do-hoa-nien";
+        [JsonProperty("_id")]
+        public string? Id { get; set; }
+
+        [JsonProperty("name")]
+        public string? Name { get; set; }
+
+        [JsonProperty("slug")]
+        public string? Slug { get; set; }
+
+        [JsonProperty("origin_name")]
+        public string? OriginName { get; set; }
+
+        [JsonProperty("poster_url")]
+        public string? PosterUrl { get; set; }
+
+        [JsonProperty("thumb_url")]
+        public string? ThumbUrl { get; set; }
+
+        [JsonProperty("year")]
+        public int Year { get; set; }
+
+        [JsonProperty("modified")]
+        public ModifiedTime? Modified { get; set; }
+    }
+
+    public class ModifiedTime
+    {
+        [JsonProperty("time")]
+        public DateTime Time { get; set; }
+    }
+
+    public class MovieResponse
+    {
+        [JsonProperty("status")]
+        public bool Status { get; set; }
+
+        [JsonProperty("items")]
+        public List<TrendingFilmModel>? Items { get; set; }
+
+        [JsonProperty("pagination")]
+        public PaginationTrending? Pagination { get; set; }
+    }
+
+
+    public class PaginationTrending
+    {
+        [JsonProperty("totalItems")]
+        public int TotalItems { get; set; }
+
+        [JsonProperty("totalItemsPerPage")]
+        public int TotalItemsPerPage { get; set; }
+
+        [JsonProperty("currentPage")]
+        public int CurrentPage { get; set; }
+
+        [JsonProperty("totalPages")]
+        public int TotalPages { get; set; }
     }
 }

@@ -58,6 +58,25 @@ namespace MovieNest.Helpers
             }
             return allItems;
         }
+        public static async Task<List<TrendingFilmModel>> FetchTrendingFilmAsync(string BaseUrl, int pages)
+        {
+            var allItems = new List<TrendingFilmModel>();
+            for (int i = 1; i <= pages; i++)
+            {
+                string url = BaseUrl + i;
+                string response = await HttpHelper.GetResponseAsync(url);
+                if (response != null)
+                {
+                    var trendingFilm = JsonConvert.DeserializeObject<MovieResponse>(response);
+                    if (trendingFilm?.Items != null)
+                    {
+                        allItems.AddRange(trendingFilm.Items);
+                    }
+                }
+            }
+            return allItems;
+        }
+
         public static async Task<List<ItemHH>> FetchPhimHoatHinhDataAsync(string BaseUrl, int pages)
         {
             var allItems = new List<ItemHH>();
