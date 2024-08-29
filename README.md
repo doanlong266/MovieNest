@@ -19,11 +19,11 @@
 
 3. **Trang yêu thích (Favorites)**: Người dùng có thể thêm phim vào danh sách yêu thích để dễ dàng truy cập lại sau này.
 
-   <img src="https://github.com/user-attachments/assets/72c03ce2-49ee-423f-b209-41f92320af8c" width="300" />
+    <img src="https://github.com/user-attachments/assets/968fb652-c01c-4c74-a48b-57453a8dc920" width="300" />
 
 4. **Trang xem phim (Play Movie)**: Cho phép người dùng xem phim trực tuyến với chất lượng cao.
 
-   <img src="https://github.com/user-attachments/assets/968fb652-c01c-4c74-a48b-57453a8dc920" width="300" />
+   <img src="https://github.com/user-attachments/assets/72c03ce2-49ee-423f-b209-41f92320af8c" width="300" />
 
 ## Hướng dẫn sử dụng
 
