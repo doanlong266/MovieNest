@@ -27,7 +27,7 @@
 
 ## Hướng dẫn sử dụng
 
-Để biết thêm chi tiết về cách sử dụng ứng dụng api về phim, vui lòng tham khảo tài liệu hướng dẫn đầy đủ tại: [Hướng dẫn sử dụng](https://kkphim.com/help/help.htm)
+Để biết thêm chi tiết về cách sử dụng ứng dụng api về phim, vui lòng tham khảo tài liệu hướng dẫn đầy đủ tại: [Hướng dẫn sử dụng](https://kkphim.com/help/help.html)
 
 ## Yêu cầu hệ thống
 
