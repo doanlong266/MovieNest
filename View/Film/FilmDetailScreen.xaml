@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              NavigationPage.HasNavigationBar="False"
              Shell.NavBarIsVisible="False"
              BackgroundColor="{x:StaticResource Background}"
@@ -32,7 +33,11 @@
                         <Label x:Name="nameEpisode" Style="{x:StaticResource Text}" FontSize="15" />
                     </StackLayout>
                     <StackLayout HorizontalOptions="EndAndExpand">
-                        <Label Text="{x:StaticResource Down}" FontFamily="FAS" Style="{x:StaticResource Text}" FontSize="20" />
+                        <Label Text="{x:StaticResource Down}" FontFamily="FAS" Style="{x:StaticResource Text}" FontSize="20">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SummaryFilm"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Margin="0,5,0,0" HorizontalOptions="StartAndExpand">
@@ -87,5 +92,44 @@
                 <Label Margin="0,10,0,0" Text="Tải xuống" Style="{x:StaticResource Text}" FontSize="15" FontFamily="NR"/>
             </StackLayout>
         </StackLayout>
+        <dxco:DXPopup x:Name="popup"
+              AllowScrim="True"
+              CloseOnScrimTap="True"
+              VerticalAlignment="Bottom"
+              HorizontalAlignment="Stretch"
+              CornerRadius="0"
+                      BackgroundColor="{x:StaticResource BackgroundFrame}">
+            <VerticalStackLayout Padding="0,0">
+                <StackLayout>
+                    <Label x:Name="Summary" Margin="5"
+                   HorizontalTextAlignment="Start"
+                   Style="{x:StaticResource Text}"
+                   LineBreakMode="WordWrap" 
+                        MaxLines="5"
+                        />
+                    <Label  x:Name="SummaryTime" Margin="5"
+                        HorizontalTextAlignment="Start"
+                        Style="{x:StaticResource Text}"
+                       
+                    />
+                    <Label  x:Name="SummaryCountry" Margin="5"
+                        HorizontalTextAlignment="Start"
+                        Style="{x:StaticResource Text}"
+                    />
+                    <Label  x:Name="SummaryCategory" Margin="5"
+                        HorizontalTextAlignment="Start"
+                        Style="{x:StaticResource Text}"
+                    />
+                    <Label x:Name="SummaryEpisode" Margin="5"
+                        HorizontalTextAlignment="Start"
+                        Style="{x:StaticResource Text}"
+                     />
+                    <Label x:Name="SummaryYear" Margin="5"
+                        HorizontalTextAlignment="Start"
+                        Style="{x:StaticResource Text}"
+                    />      
+                </StackLayout>
+            </VerticalStackLayout>
+        </dxco:DXPopup>
     </VerticalStackLayout>
 </ContentPage>

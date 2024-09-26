@@ -1,4 +1,5 @@
-﻿using MovieNest.Helpers;
+﻿using DevExpress.Maui.Editors;
+using MovieNest.Helpers;
 using MovieNest.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -104,6 +105,13 @@ namespace MovieNest.View.Film
                                         firstServerData.SelectBackground = "#f1b722";
                                         Media.Source = firstServerData.LinkM3u8;
                                         nameEpisode.Text = currentFilmDetail.Movie.Name+" - " + "Tập " + firstServerData.Name;
+                                        Summary.Text = System.Net.WebUtility.HtmlDecode(currentFilmDetail.Movie.Content);
+                                        SummaryTime.Text = "Thời lượng: " + currentFilmDetail.Movie.Time.Replace("/tập", "");
+                                        SummaryCountry.Text = "Quốc gia: " + currentFilmDetail.Movie.Country[0].Name;
+                                        string sumCate = $"Thể loại: {categories.ToLower()}";
+                                        SummaryCategory.Text = sumCate;
+                                        SummaryEpisode.Text = "Số tập: " + episodeInfo;
+                                        SummaryYear.Text = "Phát hành: " + currentFilmDetail.Movie.Year;
                                     }
 
                                     lsvEpisode.ItemsSource = allServerData;
@@ -140,6 +148,18 @@ namespace MovieNest.View.Film
 
             Navigation.PopAsync();
         }
+        private void SummaryFilm(object sender, EventArgs e)
+        {
+            if (sender is Label label)
+            {
+                label.IsEnabled = false;
+                if (label.GestureRecognizers[0] is TapGestureRecognizer tapGestureRecognizer)
+                {
+                    popup.IsOpen = true;
+                    label.IsEnabled = true;
+                }
+            }
+        }
 
         private void chooseEpisode(object sender, EventArgs e)
         {
@@ -163,7 +183,7 @@ namespace MovieNest.View.Film
                 lsvEpisode.ItemsSource = allServerData;
             }
         }
-
+          
         private void addFavorite(object sender, EventArgs e)
         {
             string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "favorites.xml");
